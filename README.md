@@ -33,3 +33,6 @@ O projeto inclui também a criação de documentação abrangente para facilitar
 - RF 6 - Gestão de estoque: Monitora e atualiza o estoque de produtos com base nas vendas realizadas, evitando vendas de produtos esgotados.
 - RF 7 - Relatórios e análises: Fornece informações detalhadas sobre vendas, lucros, produtos mais vendidos, clientes mais frequentes, entre outros dados relevantes para a tomada de decisões.
 - RF 8 - Gestão de faturas: Permite a geração de faturas para os clientes, registrando detalhes como valor total, prazo de pagamento, histórico de pagamentos, etc.
+
+### Modelagem de dados (Entity Relationship Diagram)
+<img src="/UML/easysales.png" width="700" height="500">
