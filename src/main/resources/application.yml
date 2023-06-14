@@ -15,6 +15,10 @@ spring:
 
   springdoc:
     paths-to-match:
-      - /api/**/v1/**
+      - /api/v1/**
     swagger-ui:
       user-root-path: true
+
+server:
+  servlet:
+    context-path: /api/v1

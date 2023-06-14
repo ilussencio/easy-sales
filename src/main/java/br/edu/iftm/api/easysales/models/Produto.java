@@ -1,13 +1,12 @@
 package br.edu.iftm.api.easysales.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,4 +23,13 @@ public class Produto {
     private String estoque;
     private String descricao;
     private String preco;
+
+    @ManyToOne
+    @JoinColumn(name = "idCategoria")
+    private Categoria categoria;
+
+    //RELACIONAMENTO PRODUTO E PEDIDO VENDA (N:N)
+    @ManyToMany(mappedBy = "produtos")
+    private List<PedidoVenda> pedidoVendas;
+
 }

@@ -1,9 +1,6 @@
 package br.edu.iftm.api.easysales.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +23,8 @@ public class Endereco {
     private String cidade;
     private String estado;
     private String complemento;
+
+    @OneToOne
+    @JoinColumn(name = "idCliente")
+    private Cliente cliente;
 }

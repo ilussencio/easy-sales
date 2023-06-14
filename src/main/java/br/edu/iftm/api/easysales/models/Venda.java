@@ -1,9 +1,6 @@
 package br.edu.iftm.api.easysales.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -13,8 +10,12 @@ import lombok.*;
 
 @Entity
 public class Venda {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idVenda;
+
+    //RELACIONAMENTO ENTRE VENDA E PEDIDO VENDA (1:1)
+    @OneToOne
+    @JoinColumn(name = "idPedidoVenda")
+    private PedidoVenda pedidoVenda;
 }
