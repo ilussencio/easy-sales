@@ -1,39 +1,39 @@
 package br.edu.iftm.api.easysales.controllers;
 
-import br.edu.iftm.api.easysales.DTO.ProdutoDTO;
-import br.edu.iftm.api.easysales.services.ProdutoService;
+import br.edu.iftm.api.easysales.DTO.CategoriaDTO;
+import br.edu.iftm.api.easysales.services.CategoriaService;
 import br.edu.iftm.api.easysales.utils.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/produto")
+@RequestMapping("/categoria")
 @RestController
-public class ProdutoController {
+public class CategoriaController {
 
     @Autowired
-    private ProdutoService service;
+    private CategoriaService service;
 
     @GetMapping(produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    public List<ProdutoDTO> findAll(){
+    public List<CategoriaDTO> findAll(){
         return service.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
-    public ProdutoDTO findById(@PathVariable Long id) throws Exception{
+    public CategoriaDTO findById(@PathVariable Long id) throws Exception{
         return service.findById(id);
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
                 produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-    public ProdutoDTO save(@RequestBody ProdutoDTO categoriaDTO) throws Exception {
+    public CategoriaDTO save(@RequestBody CategoriaDTO categoriaDTO) throws Exception {
         return service.save(categoriaDTO);
     }
 
     @PutMapping(consumes = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML},
                 produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML})
-    public ProdutoDTO update(@RequestBody ProdutoDTO categoriaDTO) throws Exception {
+    public CategoriaDTO update(@RequestBody CategoriaDTO categoriaDTO) throws Exception {
         return service.update(categoriaDTO);
     }
 
