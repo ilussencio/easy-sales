@@ -19,9 +19,9 @@ public class ProdutoDTO extends RepresentationModel<ProdutoDTO>  implements Seri
     private Long idProduto;
     private String nome;
     private String images;
-    private String estoque;
+    private int estoque;
     private String descricao;
-    private String preco;
-    private CategoriaDTO categoriaDTO;
-    private List<PedidoVendaDTO> pedidoVendaDTOS;
+    private float preco;
+    private CategoriaDTO categoria;
+   // private List<PedidoVendaDTO> pedidoVendaDTOS;
 }

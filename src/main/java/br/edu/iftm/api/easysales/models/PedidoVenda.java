@@ -31,27 +31,15 @@ public class PedidoVenda {
             inverseJoinColumns = @JoinColumn(name = "idProduto"))
     private List<Produto> produtos;
 
-    //RELACIONAMENTO ENTRE PEDIDO VENDA E VENDA (1:1)
-    @OneToOne(mappedBy = "pedidoVenda")
+    //RELACIONAMENTO ENTRE PEDIDO VENDA E VENDA
+    @OneToOne
     private Venda venda;
 
-    //RELACIONAMENTO ENTRE PEDIDO VENDA E FORMA DE PAGAMENTO (1:1)
-    @OneToOne
-    @JoinColumn(name = "idFormaPagamento")
-    private FormaPagamento formaPagamento;
+    //RELACIONAMENTO ENTRE PEDIDO VENDA E FORMA DE PAGAMENTO
+    @ManyToOne
+    private FormaPagamento pagamento;
 
-    //RELACIONAMENTO ENTRE PEDIDO VENDA E ENDERECO (1:1)
-    @OneToOne
-    @JoinColumn(name = "idEndereco")
-    private Endereco endereco;
-
-    //RELACIONAMENTO ENTRE PEDIDO VENDA E CLIENTE (1:1)
-    @OneToOne
-    @JoinColumn(name = "idCliente")
+    //RELACIONAMENTO ENTRE PEDIDO VENDA E CLIENTE
+    @ManyToOne
     private Cliente cliente;
-
-    //RELACIONAMENTO ENTRE PEDIDO VENDA E VENDEDOR (1:1)
-    @OneToOne
-    @JoinColumn(name = "idVendedor")
-    private Vendedor vendedor;
 }

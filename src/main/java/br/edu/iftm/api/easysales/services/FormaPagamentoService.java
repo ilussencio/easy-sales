@@ -50,7 +50,7 @@ public class FormaPagamentoService {
     public FormaPagamentoDTO update(FormaPagamentoDTO formaPagamentoDTO) throws Exception {
         if(formaPagamentoDTO == null) throw new RequiredObjectIsNullException("Objeto FormaPagamentoDTO está nulo");
         var formaPagamentoDb = repository.findById(formaPagamentoDTO.getIdFormaPagamento()).orElseThrow(() -> new ResourceNotFoundException("formaPagamento não encontrada"));
-        FormaPagamento formaPagamento = DozerMapper.parseObject(formaPagamentoDb, FormaPagamento.class);
+        FormaPagamento formaPagamento = DozerMapper.parseObject(formaPagamentoDTO, FormaPagamento.class);
         var Db = repository.save(formaPagamento);
         formaPagamentoDTO = DozerMapper.parseObject(Db, FormaPagamentoDTO.class);
         return formaPagamentoDTO;

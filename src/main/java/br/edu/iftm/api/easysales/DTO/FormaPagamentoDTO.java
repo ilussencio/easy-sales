@@ -20,5 +20,5 @@ public class FormaPagamentoDTO extends RepresentationModel<FormaPagamentoDTO> im
     private String descricao;
     private String nome;
 
-    private List<PedidoVendaDTO> pedidoVendaDTOS;
+    //private List<PedidoVendaDTO> pedidoVendaDTOS;
 }

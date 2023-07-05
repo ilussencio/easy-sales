@@ -1,5 +1,6 @@
 package br.edu.iftm.api.easysales.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,6 @@ public class FormaPagamento {
     private String nome;
 
     //RELACIONAMENTO ENTRE FORMA PAGAMENTO E PEDIDO VENDA (1:N)
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pagamento", orphanRemoval = true)
     private List<PedidoVenda> pedidoVendas;
 }

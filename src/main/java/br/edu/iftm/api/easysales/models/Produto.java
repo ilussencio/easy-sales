@@ -20,9 +20,9 @@ public class Produto {
     private Long idProduto;
     private String nome;
     private String images;
-    private String estoque;
+    private int estoque;
     private String descricao;
-    private String preco;
+    private float preco;
 
     @ManyToOne
     @JoinColumn(name = "idCategoria")

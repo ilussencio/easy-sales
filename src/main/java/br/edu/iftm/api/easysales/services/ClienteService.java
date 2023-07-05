@@ -51,14 +51,14 @@ public class ClienteService {
         return clienteDTO;
     }
 
-    public ClienteDTO update(ClienteDTO ClienteDTO) throws Exception {
-        if(ClienteDTO == null) throw new RequiredObjectIsNullException("Objeto ClienteDTO está nulo");
-        var clienteDb = repository.findById(ClienteDTO.getIdCliente()).orElseThrow(() -> new ResourceNotFoundException("cliente não encontrada"));
-        Cliente cliente = DozerMapper.parseObject(ClienteDTO, Cliente.class);
+    public ClienteDTO update(ClienteDTO clienteDTO) throws Exception {
+        if(clienteDTO == null) throw new RequiredObjectIsNullException("Objeto ClienteDTO está nulo");
+        var clienteDb = repository.findById(clienteDTO.getIdCliente()).orElseThrow(() -> new ResourceNotFoundException("cliente não encontrada"));
+        Cliente cliente = DozerMapper.parseObject(clienteDTO, Cliente.class);
         var Db = repository.save(cliente);
-        ClienteDTO = DozerMapper.parseObject(Db, ClienteDTO.class);
-        ClienteDTO.add(linkTo(methodOn(ClienteController.class).findById(ClienteDTO.getIdCliente())).withSelfRel());
-        return ClienteDTO;
+        clienteDTO = DozerMapper.parseObject(Db, ClienteDTO.class);
+        clienteDTO.add(linkTo(methodOn(ClienteController.class).findById(clienteDTO.getIdCliente())).withSelfRel());
+        return clienteDTO;
     }
 
     public void delete(Long id) throws Exception {

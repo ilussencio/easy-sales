@@ -19,5 +19,5 @@ public class CategoriaDTO  extends RepresentationModel<CategoriaDTO> implements 
     private Long idCategoria;
     private String nome;
 
-    private List<ProdutoDTO> produtoDTOS;
+    //private List<ProdutoDTO> produtoDTOS;
 }

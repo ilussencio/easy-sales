@@ -37,7 +37,7 @@ public class CategoriaController {
         return service.update(categoriaDTO);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) throws Exception {
         service.delete(id);
     }

@@ -53,7 +53,7 @@ public class EnderecoService {
     public EnderecoDTO update(EnderecoDTO enderecoDTO) throws Exception {
         if(enderecoDTO == null) throw new RequiredObjectIsNullException("Objeto EnderecoDTO está nulo");
         var enderecoDb = repository.findById(enderecoDTO.getIdEndereco()).orElseThrow(() -> new ResourceNotFoundException("endereco não encontrada"));
-        Endereco endereco = DozerMapper.parseObject(enderecoDb, Endereco.class);
+        Endereco endereco = DozerMapper.parseObject(enderecoDTO, Endereco.class);
         var Db = repository.save(endereco);
         enderecoDTO = DozerMapper.parseObject(Db, EnderecoDTO.class);
         enderecoDTO.add(linkTo(methodOn(EnderecoController.class).findById(enderecoDTO.getIdEndereco())).withSelfRel());

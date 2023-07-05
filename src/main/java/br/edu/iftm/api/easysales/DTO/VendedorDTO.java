@@ -22,6 +22,6 @@ public class VendedorDTO extends RepresentationModel<VendedorDTO> implements Ser
     private String email;
     private String usuario;
     private String senha;
-    private List<ClienteDTO> clienteDTOS;
-    private List<PedidoVendaDTO> pedidoVendaDTOS;
+    //private List<ClienteDTO> clienteDTOS;
+    //private List<PedidoVendaDTO> pedidoVendaDTOS;
 }

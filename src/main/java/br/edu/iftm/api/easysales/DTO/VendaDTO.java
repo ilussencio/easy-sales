@@ -16,5 +16,5 @@ import java.io.Serializable;
 
 public class VendaDTO extends RepresentationModel<VendaDTO>  implements Serializable {
     private Long idVenda;
-    private PedidoVendaDTO pedidoVendaDTO;
+    private PedidoVendaDTO pedidoVenda;
 }

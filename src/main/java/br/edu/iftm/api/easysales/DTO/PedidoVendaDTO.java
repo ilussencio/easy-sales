@@ -24,10 +24,9 @@ public class PedidoVendaDTO extends RepresentationModel<PedidoVendaDTO>  impleme
     private LocalDate data;
     private String status;
 
-    private List<ProdutoDTO> produtoDTOS;
-    private VendaDTO vendaDTO;
-    private FormaPagamentoDTO formaPagamentoDTO;
-    private EnderecoDTO enderecoDTO;
-    private ClienteDTO clienteDTO;
-    private VendedorDTO vendedorDTO;
+    private List<ProdutoDTO> produtos;
+    private VendaDTO venda;
+    private FormaPagamentoDTO formaPagamento;
+
+    private ClienteDTO cliente;
 }

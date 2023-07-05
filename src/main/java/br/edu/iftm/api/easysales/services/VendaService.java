@@ -53,7 +53,7 @@ public class VendaService {
     public VendaDTO update(VendaDTO vendaDTO) throws Exception {
         if(vendaDTO == null) throw new RequiredObjectIsNullException("Objeto VendaDTO está nulo");
         var vendaDb = repository.findById(vendaDTO.getIdVenda()).orElseThrow(() -> new ResourceNotFoundException("Venda não encontrada"));
-        Venda venda = DozerMapper.parseObject(vendaDb, Venda.class);
+        Venda venda = DozerMapper.parseObject(vendaDTO, Venda.class);
         var Db = repository.save(venda);
         vendaDTO = DozerMapper.parseObject(Db, VendaDTO.class);
         vendaDTO.add(linkTo(methodOn(VendaController.class).findById(vendaDTO.getIdVenda())).withSelfRel());

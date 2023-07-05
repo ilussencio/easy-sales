@@ -24,11 +24,7 @@ public class Vendedor {
     private String usuario;
     private String senha;
 
-    //RELACIONAMENTO ENTRE VENDEDOR E CLIENTE (1:N)
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vendedor")
     private List<Cliente> clientes;
 
-    //RELACIONAMENTO ENTRE VENDEDOR E PEDIDO DE VENDA (1:N)
-    @OneToMany
-    private List<PedidoVenda> pedidoVendas;
 }

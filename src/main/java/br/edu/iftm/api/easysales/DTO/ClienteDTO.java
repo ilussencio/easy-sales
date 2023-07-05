@@ -21,6 +21,6 @@ public class ClienteDTO extends RepresentationModel<ClienteDTO>  implements Seri
     private String telefone;
     private String cpfCnpj;
     private String email;
-    private List<EnderecoDTO> enderecoDTOS;
-    private VendedorDTO vendedorDTO;
+    private EnderecoDTO endereco;
+    private VendedorDTO vendedor;
 }

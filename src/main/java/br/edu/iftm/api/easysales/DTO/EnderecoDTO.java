@@ -23,6 +23,4 @@ public class EnderecoDTO extends RepresentationModel<EnderecoDTO> implements Ser
     private String cidade;
     private String estado;
     private String complemento;
-
-    private ClienteDTO clienteDTO;
 }

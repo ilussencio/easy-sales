@@ -6,7 +6,9 @@ import br.edu.iftm.api.easysales.exceptions.RequiredObjectIsNullException;
 import br.edu.iftm.api.easysales.exceptions.ResourceNotFoundException;
 import br.edu.iftm.api.easysales.mapper.DozerMapper;
 import br.edu.iftm.api.easysales.models.PedidoVenda;
+import br.edu.iftm.api.easysales.models.Venda;
 import br.edu.iftm.api.easysales.repositories.PedidoVendaRepository;
+import br.edu.iftm.api.easysales.repositories.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class PedidoVendaService {
     @Autowired
     private PedidoVendaRepository repository;
+
+    @Autowired
+    private VendaRepository repositoryVenda;
 
     public List<PedidoVendaDTO> findAll(){
         List<PedidoVenda> PedidoVendaDbList = repository.findAll();
@@ -44,6 +49,12 @@ public class PedidoVendaService {
         if(pedidoVendaDTO == null) throw new RequiredObjectIsNullException("Objeto PedidoVendaDTO está nulo");
         PedidoVenda pedidoVenda = DozerMapper.parseObject(pedidoVendaDTO, PedidoVenda.class);
         var PedidoVendaDb = repository.save(pedidoVenda);
+
+        //CRIAR UMA VENDA
+        Venda venda = new Venda();
+        venda.setPedidoVenda(PedidoVendaDb);
+        repositoryVenda.save(venda);
+
         pedidoVendaDTO = DozerMapper.parseObject(PedidoVendaDb, PedidoVendaDTO.class);
         pedidoVendaDTO.add(linkTo(methodOn(PedidoVendaController.class).findById(pedidoVendaDTO.getIdPedido())).withSelfRel());
         return pedidoVendaDTO;
@@ -52,7 +63,7 @@ public class PedidoVendaService {
     public PedidoVendaDTO update(PedidoVendaDTO pedidoVendaDTO) throws Exception {
         if(pedidoVendaDTO == null) throw new RequiredObjectIsNullException("Objeto PedidoVendaDTO está nulo");
         var PedidoVendaDb = repository.findById(pedidoVendaDTO.getIdPedido()).orElseThrow(() -> new ResourceNotFoundException("Pedido Venda não encontrada"));
-        PedidoVenda pedidoVenda = DozerMapper.parseObject(PedidoVendaDb, PedidoVenda.class);
+        PedidoVenda pedidoVenda = DozerMapper.parseObject(pedidoVendaDTO, PedidoVenda.class);
         var Db = repository.save(pedidoVenda);
         pedidoVendaDTO = DozerMapper.parseObject(Db, PedidoVendaDTO.class);
         pedidoVendaDTO.add(linkTo(methodOn(PedidoVendaController.class).findById(pedidoVendaDTO.getIdPedido())).withSelfRel());

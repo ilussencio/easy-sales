@@ -52,7 +52,7 @@ public class ProdutoService {
     public ProdutoDTO update(ProdutoDTO produtoDTO) throws Exception {
         if(produtoDTO == null) throw new RequiredObjectIsNullException("Objeto ProdutoDTO está nulo");
         var produtoDb = repository.findById(produtoDTO.getIdProduto()).orElseThrow(() -> new ResourceNotFoundException("produto não encontrada"));
-        Produto produto = DozerMapper.parseObject(produtoDb, Produto.class);
+        Produto produto = DozerMapper.parseObject(produtoDTO, Produto.class);
         var Db = repository.save(produto);
         produtoDTO = DozerMapper.parseObject(Db, ProdutoDTO.class);
         produtoDTO.add(linkTo(methodOn(ProdutoController.class).findById(produtoDTO.getIdProduto())).withSelfRel());
